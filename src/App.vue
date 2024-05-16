@@ -12,6 +12,8 @@ export default {
 
 <style>
 #app {
+  display: flex;
+  justify-content: center;
 }
 body {
   margin: 0;

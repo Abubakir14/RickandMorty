@@ -32,15 +32,23 @@ export default {
 <style scoped>
 .pagination {
   margin-top: 20px;
+  
 }
-
+.pagination span {
+  color: #fa6400;
+}
 .pagination button {
   cursor: pointer;
   padding: 5px 10px;
   margin: 0 5px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f0f0f0;
+  padding: 12px;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  color: #fff;
+  cursor: pointer;
 }
 
 .pagination button:disabled {

@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <character-card v-for="character in characters" :key="character.id" :character="character" />
+  <div class="container">
+    <div>
+      <filter-form @apply-filters="applyFilters" />
+    </div>
+    <character-card v-for="character in displayedCharacters" :key="character.id" :character="character" />
     <pagination :currentPage="currentPage" :totalPages="totalPages" @update-page="fetchCharacters" />
-    <filter-form @apply-filters="applyFilters" />
   </div>
 </template>
 
@@ -21,7 +23,9 @@ export default {
   data() {
     return {
       characters: [],
+      displayedCharacters: [], // Выводимые персонажи на текущей странице
       currentPage: 1,
+      perPage: 6, // Количество персонажей на странице
       totalPages: 1,
       filters: {}
     };
@@ -33,9 +37,10 @@ export default {
     fetchCharacters(page = 1) {
       fetchCharacters(page, this.filters)
         .then(response => {
-          this.characters = response.data.results;
-          this.totalPages = response.data.info.pages;
+          this.characters = response; // Обновляем characters с новыми данными
+          this.totalPages = Math.ceil(this.characters.length / this.perPage); // Вычисляем общее количество страниц
           this.currentPage = page;
+          this.updateDisplayedCharacters(); // Обновляем отображаемых персонажей
         })
         .catch(error => {
           console.error('Error fetching characters:', error);
@@ -44,11 +49,21 @@ export default {
     applyFilters(filters) {
       this.filters = filters;
       this.fetchCharacters();
+    },
+    updateDisplayedCharacters() {
+      const startIndex = (this.currentPage - 1) * this.perPage;
+      const endIndex = startIndex + this.perPage;
+      this.displayedCharacters = this.characters.slice(startIndex, endIndex);
     }
   }
 };
 </script>
 
 <style scoped>
-/* Add your CSS styles here */
+.container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1300px;
+}
 </style>
