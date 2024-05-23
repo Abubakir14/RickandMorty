@@ -3,8 +3,8 @@
     <div>
       <filter-form @apply-filters="applyFilters" />
     </div>
-    <character-card v-for="character in displayedCharacters" :key="character.id" :character="character" />
-    <pagination :currentPage="currentPage" :totalPages="totalPages" @update-page="fetchCharacters" />
+      <character-card v-for="character in displayedCharacters" :key="character.id" :character="character" />
+      <pagination :currentPage="currentPage" :totalPages="totalPages" @update-page="fetchCharacters" />
   </div>
 </template>
 

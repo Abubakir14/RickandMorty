@@ -1,15 +1,15 @@
 <template>
   <div class="character-card">
-    <img :src="character.image" :alt="character.name">
+        <img :src="character.image" :alt="character.name">
     <div class="character-card-title">
       <h2>{{ character.name }}</h2>
         <div class="name">
             <p>{{ character.status }} - {{ character.species }}</p>
         </div>
-      <p class="character-card-data">Last known location:</p>
-      <p class="character-card-name">{{ character.location.name }}</p>
-      <p class="character-card-data">First seen in:</p> <!-- Используем информацию о первом эпизоде -->
-      <p class="character-card-name">{{ character.episodes[0].name }}</p> <!-- Используем информацию о первом эпизоде -->
+        <p class="character-card-data">Last known location:</p>
+        <p class="character-card-name">{{ character.location.name }}</p>
+        <p class="character-card-data">First seen in:</p> <!-- Используем информацию о первом эпизоде -->
+        <p class="character-card-name">{{ character.episodes[0].name }}</p> <!-- Используем информацию о первом эпизоде -->
     </div>
   </div>
 </template>
@@ -31,7 +31,6 @@ export default {
   margin: 10px;
   height: 250px;
   width: 600px;
-  /* text-align: center; */
 }
 
 .character-card-title{
@@ -78,7 +77,6 @@ export default {
 
 .name{
     display: flex;
-    /* justify-content: center; */
 }
 
 .name p{
